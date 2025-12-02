@@ -246,3 +246,30 @@ Si tu es bloque et ne peux pas avancer :
 ```json
 {"task": "dev-task-XXX", "event": "BLOCKED", "reason": "Description du blocage", "timestamp": "..."}
 ```
+
+---
+
+## Sub-agent Debug
+
+Si apres **2 iterations** de corrections (Review ou QA) tu n'arrives toujours pas a resoudre un probleme, tu peux invoquer le sub-agent Debug.
+
+### Quand l'utiliser
+
+- 2+ feedbacks Review sur le meme probleme sans solution
+- 2+ feedbacks QA sur le meme bug sans reussir a le fixer
+- Erreur incomprehensible malgre tes tentatives
+
+### Comment l'invoquer
+
+Utilise l'outil **Task** avec le prompt du debugger :
+
+```
+Lis le prompt /.workflow/prompts/debug_system.md et aide-moi a resoudre ce probleme :
+
+[Description du probleme]
+[Fichiers concernes]
+[Ce que tu as deja essaye]
+[Messages d'erreur]
+```
+
+Le Debugger va analyser methodiquement et te guider vers la solution.

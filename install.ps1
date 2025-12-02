@@ -30,6 +30,7 @@ $files = @{
     ".workflow/prompts/dev_system.md" = "$repo_base/prompts/dev_system.md"
     ".workflow/prompts/review_system.md" = "$repo_base/prompts/review_system.md"
     ".workflow/prompts/qa_system.md" = "$repo_base/prompts/qa_system.md"
+    ".workflow/prompts/debug_system.md" = "$repo_base/prompts/debug_system.md"
     "CLAUDE.md" = "$repo_base/templates/CLAUDE.md"
 }
 
