@@ -1,0 +1,15 @@
+{
+    "hooks": {
+        "PostToolUse": [
+            {
+                "matcher": "Write",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "powershell -ExecutionPolicy Bypass -File ./.workflow/scripts/notify_po.ps1"
+                    }
+                ]
+            }
+        ]
+    }
+}
