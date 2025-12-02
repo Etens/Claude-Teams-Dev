@@ -10,7 +10,7 @@
     Ecrase les fichiers existants sans confirmation.
 
 .EXAMPLE
-    irm https://raw.githubusercontent.com/ethan/Claude-Teams-Dev/main/install.ps1 | iex
+    irm https://raw.githubusercontent.com/Etens/Claude-Teams-Dev/main/install.ps1 | iex
 #>
 
 param(
@@ -19,7 +19,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$repo_base = "https://raw.githubusercontent.com/ethan/Claude-Teams-Dev/main"
+$repo_base = "https://raw.githubusercontent.com/Etens/Claude-Teams-Dev/main"
 
 $files = @{
     ".claude/commands/workflow-start.md" = "$repo_base/commands/workflow-start.md"
