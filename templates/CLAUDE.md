@@ -11,20 +11,20 @@ Commandes a executer pour verifier le code avant commit/review.
 ```bash
 # Linter / Formatage
 # TODO: Adapter selon le projet
-npm run lint          # ou: pnpm lint, yarn lint
-npm run format        # ou: pnpm format, yarn format
+npm run lint          # ou: pnpm lint, yarn lint, make lint
+npm run format        # ou: pnpm format, yarn format, make format
 
 # Type checking (TypeScript)
 # TODO: Adapter selon le projet
-npm run typecheck     # ou: tsc --noEmit
+npm run typecheck     # ou: tsc --noEmit, make typecheck
 
 # Tests
 # TODO: Adapter selon le projet
-npm run test          # ou: pytest, vitest, jest
+npm run test          # ou: pytest, vitest, jest, make test
 
 # Build
 # TODO: Adapter selon le projet
-npm run build         # ou: pnpm build, yarn build
+npm run build         # ou: pnpm build, yarn build, make build
 ```
 
 **Important** : Dev et Review doivent executer ces commandes pour verifier que les regles sont respectees.
@@ -34,19 +34,23 @@ npm run build         # ou: pnpm build, yarn build
 ## 1. Naming Conventions
 
 ### Variables et Fonctions
+
 - `snake_case` pour toutes les variables et fonctions
 - Noms en anglais strict (zero francais)
 - Noms explicites, pas d'abreviations obscures
 - Abreviations standards OK : API, URL, ID, HTTP, JSON, SQL
 
 ### Classes et Types
+
 - `PascalCase` pour classes, interfaces, types, enums
 - `UPPER_CASE` pour les enum members et constantes
 
 ### Fichiers
+
 - `snake_case` pour les noms de fichiers (ex: `my_service.ts`)
 
 ### Branches Git
+
 - Format : `<scope>-<outcome>`
 - Exemples : `cache-improve-hit-rate`, `auth-add-jwt-validation`
 
@@ -55,12 +59,14 @@ npm run build         # ou: pnpm build, yarn build
 ## 2. Code Structure
 
 ### Taille
+
 - Maximum **200 lignes** par fichier
 - Maximum **3 niveaux** d'imbrication (if/for/while)
 - Complexite cyclomatique max **10** par fonction
 - Longueur de ligne max **120 caracteres**
 
 ### Organisation
+
 - Code organise en **classes** (sauf utils pures)
 - Une classe = une responsabilite (SRP)
 - Types centralises dans `common/types/`
@@ -73,6 +79,7 @@ npm run build         # ou: pnpm build, yarn build
 ## 3. Absolute Prohibitions
 
 ### Code interdit
+
 - Aucun commentaire dans le code
 - Aucune docstring
 - Aucun `@ts-ignore`, `# noqa`, `eslint-disable`
@@ -91,6 +98,7 @@ npm run build         # ou: pnpm build, yarn build
 ## 4. Required Patterns
 
 ### Syntaxe
+
 - `===` obligatoire (jamais `==`)
 - Accolades `{}` obligatoires (meme sur une ligne)
 - Arrow functions pour les callbacks
@@ -101,12 +109,14 @@ npm run build         # ou: pnpm build, yarn build
 - Double quotes `""` pour les strings
 
 ### Formatage
+
 - Indentation 4 espaces
 - 2 lignes vides apres les imports
 - Trailing comma toujours presente
 - Imports auto-organises par ESLint/isort
 
 ### Typage
+
 - Types de retour explicites sur TOUTES les fonctions
 - Pas de boolean en argument positionnel (utiliser kwargs nommes)
 - Datetimes timezone-aware obligatoires
@@ -171,6 +181,7 @@ npm run build         # ou: pnpm build, yarn build
 ## 11. Tests
 
 ### Structure
+
 ```
 tests/
 ├── unit/           # test_module_unit.ts
@@ -179,6 +190,7 @@ tests/
 ```
 
 ### Style Python (pytest)
+
 ```python
 class TestModuleName:
     def test_returns_valid_when_data_correct(self) -> None:
@@ -188,6 +200,7 @@ class TestModuleName:
 ```
 
 ### Style TypeScript (Vitest)
+
 ```typescript
 describe("function_name()", () => {
     it("returns valid result with correct data", () => {
@@ -199,6 +212,7 @@ describe("function_name()", () => {
 ```
 
 ### Regles
+
 - Coverage minimum : 80% (tests unitaires)
 - Un describe/class par fonction
 - Nommage : `test_<action>_when_<condition>`
@@ -209,6 +223,7 @@ describe("function_name()", () => {
 ## 12. Git
 
 ### Commits
+
 - Format : emoji + phrase descriptive
 - Exemples :
   - `✨ Add user authentication with JWT`
@@ -216,20 +231,22 @@ describe("function_name()", () => {
   - `♻️ Refactor API client`
 
 ### Emojis standards
-| Emoji | Usage |
-|-------|-------|
-| ✨ | New feature |
-| 🐛 | Bug fix |
-| 🔧 | Configuration / tooling |
-| ♻️ | Refactoring |
-| 🎨 | Style / formatting |
-| 🔥 | Code removal |
-| 📝 | Documentation |
-| ⚡ | Performance |
-| 🔒 | Security |
-| ⬆️ | Dependencies update |
+
+| Emoji | Usage                   |
+| ----- | ----------------------- |
+| ✨    | New feature             |
+| 🐛    | Bug fix                 |
+| 🔧    | Configuration / tooling |
+| ♻️  | Refactoring             |
+| 🎨    | Style / formatting      |
+| 🔥    | Code removal            |
+| 📝    | Documentation           |
+| ⚡    | Performance             |
+| 🔒    | Security                |
+| ⬆️  | Dependencies update     |
 
 ### Pull Requests
+
 - Titre : `type(scope): description`
 - Body structure avec emojis par section
 - Pas de mention d'IA
