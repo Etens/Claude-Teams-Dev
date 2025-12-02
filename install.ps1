@@ -26,12 +26,17 @@ $files = @{
     ".claude/commands/workflow-status.md" = "$repo_base/commands/workflow-status.md"
     ".claude/settings.json" = "$repo_base/templates/settings.json"
     ".workflow/scripts/notify_po.ps1" = "$repo_base/scripts/notify_po.ps1"
+    ".workflow/prompts/po_system.md" = "$repo_base/prompts/po_system.md"
+    ".workflow/prompts/dev_system.md" = "$repo_base/prompts/dev_system.md"
+    ".workflow/prompts/review_system.md" = "$repo_base/prompts/review_system.md"
+    ".workflow/prompts/qa_system.md" = "$repo_base/prompts/qa_system.md"
     "CLAUDE.md" = "$repo_base/templates/CLAUDE.md"
 }
 
 $directories = @(
     ".claude/commands"
     ".workflow/scripts"
+    ".workflow/prompts"
     ".workflow/instances"
 )
 

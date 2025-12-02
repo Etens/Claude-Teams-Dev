@@ -60,7 +60,9 @@ Ecris dans `status.json` :
 
 ### Etape 4 : Lire les bonnes pratiques
 
-Lis le fichier `CLAUDE.md` a la racine du projet pour connaitre les conventions.
+Lis le fichier `CLAUDE.md` a la racine du projet pour connaitre :
+- Toutes les conventions de code
+- Les commandes du projet (lint, build, test)
 
 ---
 
@@ -111,10 +113,21 @@ Exemples :
 
 ### Etape 1 : Verifications finales
 
-- [ ] Le code compile/build sans erreur
+Execute les commandes definies dans `CLAUDE.md` (section "Project Commands") :
+
+```bash
+# Exemple - adapter selon le projet
+npm run lint
+npm run typecheck
+npm run build
+```
+
+Checklist :
+- [ ] Lint passe sans erreur
+- [ ] TypeScript compile sans erreur
+- [ ] Le build reussit
 - [ ] Les tests existants passent
 - [ ] Pas de `console.log` de debug oublies
-- [ ] Les bonnes pratiques sont respectees
 
 ### Etape 2 : Push ta branche
 

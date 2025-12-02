@@ -1,14 +1,41 @@
-# Best Practices - Code Standards
+# Project Standards
 
 Ce fichier definit les conventions et bonnes pratiques du projet.
 
 ---
 
-## Nommage
+## Project Commands
+
+Commandes a executer pour verifier le code avant commit/review.
+
+```bash
+# Linter / Formatage
+# TODO: Adapter selon le projet
+npm run lint          # ou: pnpm lint, yarn lint
+npm run format        # ou: pnpm format, yarn format
+
+# Type checking (TypeScript)
+# TODO: Adapter selon le projet
+npm run typecheck     # ou: tsc --noEmit
+
+# Tests
+# TODO: Adapter selon le projet
+npm run test          # ou: pytest, vitest, jest
+
+# Build
+# TODO: Adapter selon le projet
+npm run build         # ou: pnpm build, yarn build
+```
+
+**Important** : Dev et Review doivent executer ces commandes pour verifier que les regles sont respectees.
+
+---
+
+## 1. Naming Conventions
 
 ### Variables et Fonctions
 - `snake_case` pour toutes les variables et fonctions
-- Noms en anglais strict
+- Noms en anglais strict (zero francais)
 - Noms explicites, pas d'abreviations obscures
 - Abreviations standards OK : API, URL, ID, HTTP, JSON, SQL
 
@@ -25,7 +52,7 @@ Ce fichier definit les conventions et bonnes pratiques du projet.
 
 ---
 
-## Structure
+## 2. Code Structure
 
 ### Taille
 - Maximum **200 lignes** par fichier
@@ -43,8 +70,9 @@ Ce fichier definit les conventions et bonnes pratiques du projet.
 
 ---
 
-## Interdictions Absolues
+## 3. Absolute Prohibitions
 
+### Code interdit
 - Aucun commentaire dans le code
 - Aucune docstring
 - Aucun `@ts-ignore`, `# noqa`, `eslint-disable`
@@ -55,12 +83,12 @@ Ce fichier definit les conventions et bonnes pratiques du projet.
 - Aucune ternaire imbriquee
 - Aucun code hallucine (toujours reutiliser l'existant)
 - Aucun emoji dans le code/tests (OK dans commits)
-- Aucun code commente
+- Aucun code commente (ERA)
 - Aucun code mort / variables inutilisees
 
 ---
 
-## Patterns Obligatoires
+## 4. Required Patterns
 
 ### Syntaxe
 - `===` obligatoire (jamais `==`)
@@ -76,33 +104,71 @@ Ce fichier definit les conventions et bonnes pratiques du projet.
 - Indentation 4 espaces
 - 2 lignes vides apres les imports
 - Trailing comma toujours presente
+- Imports auto-organises par ESLint/isort
 
 ### Typage
-- Types de retour explicites sur toutes les fonctions
-- Pas de boolean en argument positionnel
+- Types de retour explicites sur TOUTES les fonctions
+- Pas de boolean en argument positionnel (utiliser kwargs nommes)
 - Datetimes timezone-aware obligatoires
 - Serializers pour toute transformation de donnees
 
 ---
 
-## Gestion des Erreurs
+## 5. Error Handling
 
 - Exceptions specifiques (jamais `catch (e)` generique)
 - Classes d'exception custom pour les erreurs metier
-- Appels externes : service dedie + try/catch + logs
-- Fallbacks explicites et justifies
+- Appels externes encapsules dans un service dedie + try/catch + logs
+- Fallbacks explicites et justifies (pas de fallback silencieux)
 
 ---
 
-## Logs
+## 6. Logs
 
 - Format : `{timestamp} [{level}] [{function_name}] {context} {message}`
-- Niveaux : DEBUG, INFO, WARNING, ERROR, CRITICAL
+- Niveaux utilises : DEBUG, INFO, WARNING, ERROR, CRITICAL
 - Logger custom (jamais `console.log` direct)
+- Logs aux points cles du flux
 
 ---
 
-## Tests
+## 7. Security
+
+- Secrets dans secret manager (jamais dans le code)
+- Validation des inputs aux frontieres systeme
+- Pas de donnees sensibles en clair dans les logs
+- Dependances avec versions fixees
+
+---
+
+## 8. Performance (Red Flags)
+
+- Pas de requetes N+1 (requete dans une boucle)
+- Pas de boucles imbriquees O(n2) evitables
+- Pas de gros payloads inutiles
+- Pas de memory leaks potentiels
+
+---
+
+## 9. Quality
+
+- DRY respecte (zero duplication de code)
+- Code mort supprime immediatement
+- Simplifications appliquees (regles SIM)
+- Clarte avant optimisation
+- Si code touche : ameliorer autour si necessaire
+
+---
+
+## 10. API (si applicable)
+
+- Format reponse : `{ data, meta, error }`
+- HTTP Status stricts (200, 201, 400, 404, 500...)
+- Null handling avec optional chaining (`?.`, `??`)
+
+---
+
+## 11. Tests
 
 ### Structure
 ```
@@ -140,34 +206,30 @@ describe("function_name()", () => {
 
 ---
 
-## API
-
-- Format reponse : `{ data, meta, error }`
-- HTTP Status stricts (200, 201, 400, 404, 500...)
-- Validation aux frontieres systeme
-- Null handling avec optional chaining (`?.`, `??`)
-
----
-
-## Git
+## 12. Git
 
 ### Commits
 - Format : emoji + phrase descriptive
 - Exemples :
-  - `Add user authentication with JWT`
-  - `Fix login redirect loop`
-  - `Refactor API client`
+  - `✨ Add user authentication with JWT`
+  - `🐛 Fix login redirect loop`
+  - `♻️ Refactor API client`
+
+### Emojis standards
+| Emoji | Usage |
+|-------|-------|
+| ✨ | New feature |
+| 🐛 | Bug fix |
+| 🔧 | Configuration / tooling |
+| ♻️ | Refactoring |
+| 🎨 | Style / formatting |
+| 🔥 | Code removal |
+| 📝 | Documentation |
+| ⚡ | Performance |
+| 🔒 | Security |
+| ⬆️ | Dependencies update |
 
 ### Pull Requests
 - Titre : `type(scope): description`
 - Body structure avec emojis par section
 - Pas de mention d'IA
-
----
-
-## Performance (Red Flags)
-
-- Pas de requetes N+1
-- Pas de boucles imbriquees O(n2)
-- Pas de gros payloads inutiles
-- Pas de memory leaks

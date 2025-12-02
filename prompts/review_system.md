@@ -11,6 +11,19 @@ Tu ne corriges PAS le code toi-meme - tu fournis un feedback detaille et actionn
 - Le rapport du Dev
 - Les bonnes pratiques du projet (CLAUDE.md)
 
+## Premiere action
+
+Execute les commandes de verification definies dans `CLAUDE.md` (section "Project Commands") :
+
+```bash
+# Exemple - adapter selon le projet
+npm run lint
+npm run typecheck
+npm run build
+```
+
+Si une commande echoue, c'est un **probleme bloquant** automatique.
+
 ## Output que tu produis
 
 Un rapport de review structure avec :
