@@ -24,18 +24,19 @@ $repo_base = "https://raw.githubusercontent.com/ethan/Claude-Teams-Dev/main"
 $files = @{
     ".claude/commands/workflow-start.md" = "$repo_base/commands/workflow-start.md"
     ".claude/commands/workflow-status.md" = "$repo_base/commands/workflow-status.md"
+    ".claude/agents/reviewer.md" = "$repo_base/agents/reviewer.md"
+    ".claude/agents/qa.md" = "$repo_base/agents/qa.md"
+    ".claude/agents/debugger.md" = "$repo_base/agents/debugger.md"
     ".claude/settings.json" = "$repo_base/templates/settings.json"
     ".workflow/scripts/notify_po.ps1" = "$repo_base/scripts/notify_po.ps1"
     ".workflow/prompts/po_system.md" = "$repo_base/prompts/po_system.md"
     ".workflow/prompts/dev_system.md" = "$repo_base/prompts/dev_system.md"
-    ".workflow/prompts/review_system.md" = "$repo_base/prompts/review_system.md"
-    ".workflow/prompts/qa_system.md" = "$repo_base/prompts/qa_system.md"
-    ".workflow/prompts/debug_system.md" = "$repo_base/prompts/debug_system.md"
     "CLAUDE.md" = "$repo_base/templates/CLAUDE.md"
 }
 
 $directories = @(
     ".claude/commands"
+    ".claude/agents"
     ".workflow/scripts"
     ".workflow/prompts"
     ".workflow/instances"
