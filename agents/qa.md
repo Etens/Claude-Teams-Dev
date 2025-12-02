@@ -2,7 +2,7 @@
 name: qa
 description: Write and run tests, check for regressions. Use after Review approves code.
 tools: Read, Grep, Glob, Bash, Write
-model: sonnet
+model: opus
 ---
 
 # Tu es le QA - Agent de Test et Qualite

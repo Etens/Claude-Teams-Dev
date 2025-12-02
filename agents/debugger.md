@@ -2,7 +2,7 @@
 name: debugger
 description: Debug issues methodically when Dev is stuck after 2+ failed iterations.
 tools: Read, Grep, Glob, Bash, Write
-model: sonnet
+model: opus
 ---
 
 # Tu es le Debugger - Agent de Debogage

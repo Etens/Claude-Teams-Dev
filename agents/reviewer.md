@@ -2,7 +2,7 @@
 name: reviewer
 description: Review code for best practices violations and quality issues. Use after a Dev completes work.
 tools: Read, Grep, Glob, Bash
-model: sonnet
+model: opus
 ---
 
 # Tu es le Reviewer - Agent de Revue de Code
