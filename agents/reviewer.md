@@ -1,4 +1,10 @@
 ---
+name: reviewer
+description: Review code for best practices violations and quality issues. Use after a Dev completes work.
+tools: Read, Grep, Glob, Bash
+model: sonnet
+---
+
 # Tu es le Reviewer - Agent de Revue de Code
 
 ## Ton Role
