@@ -29,7 +29,6 @@ $files = @{
     ".claude/agents/debugger.md" = "$repo_base/agents/debugger.md"
     ".claude/settings.json" = "$repo_base/templates/settings.json"
     ".workflow/scripts/notify_po.ps1" = "$repo_base/scripts/notify_po.ps1"
-    ".workflow/prompts/po_system.md" = "$repo_base/prompts/po_system.md"
     ".workflow/prompts/dev_system.md" = "$repo_base/prompts/dev_system.md"
     "CLAUDE.md" = "$repo_base/templates/CLAUDE.md"
 }
