@@ -91,12 +91,6 @@ foreach ($local_path in $files.Keys) {
     }
 }
 
-$gitignore_entries = @(
-    ".workflow/instances/"
-    ".workflow/notifications.jsonl"
-    ".workflow/po_alerts.log"
-)
-
 $gitignore_path = ".gitignore"
 
 Write-Host ""
@@ -109,11 +103,17 @@ if (Test-Path $gitignore_path) {
 }
 
 $added = 0
-foreach ($entry in $gitignore_entries) {
-    if ($gitignore_content -notmatch [regex]::Escape($entry)) {
-        Add-Content -Path $gitignore_path -Value $entry
-        $added++
-    }
+
+# Ajouter .env si pas deja present (cherche .env seul ou .env.*)
+if ($gitignore_content -notmatch "(?m)^\.env\s*$") {
+    Add-Content -Path $gitignore_path -Value ".env"
+    $added++
+}
+
+# Ajouter .workflow/ si aucune entree .workflow n'existe
+if ($gitignore_content -notmatch "(?m)^\.workflow") {
+    Add-Content -Path $gitignore_path -Value ".workflow/"
+    $added++
 }
 
 if ($added -gt 0) {
